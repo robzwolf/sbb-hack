@@ -73,14 +73,13 @@ $(document).ready(() => {
             $(this).toggleClass("selected");
             $("#tile-dislike-" + $(this).attr("data-activity")).toggleClass("tile-activity-disabled")
             e.preventDefault();
-        })
-        
+        });
         $(".tile-activity-dislike").click(function(e) {
             if( !$(this).hasClass("tile-activity-disabled") ) {
                 $(this).toggleClass("selected");
             }
             e.preventDefault();
-        })
+        });
     });
 
 });

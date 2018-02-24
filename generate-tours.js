@@ -42,11 +42,15 @@ module.exports = {
         // Filter the list of activities down to only those that the user doesn't dislike
         suitable_events = [];
         activities.events.forEach((event, index) => {
-            console.log("index of " + event.category + " in .disliked is: " + userJson["activities"]["disliked"].indexOf(event.category));
+            // console.log("index of " + event.category + " in .disliked is: " + userJson["activities"]["disliked"].indexOf(event.category));
             if(userJson["activities"]["disliked"].indexOf(event.category) <= -1) {
                 suitable_events.push(event);
             }
         });
         console.log("suitable_events are:", suitable_events);
+        
+        
+        
+        
     }
 }

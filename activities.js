@@ -29,13 +29,30 @@ module.exports = {
         {
             "category": "mountain-biking",
             "name": "Torrenttrail Bike",
-            "location": "Leukerbad, Rinderhütte-Leukerbad",
+            "location": "Leukerbad",
             "datetime": "2018-02-26T10:00:00.110Z",
             "data": {
                 "Length": "27 km",
                 "Ascents": "940 m",
                 "Descents": "1900 m"
             }
+        },
+        {
+            "category": "mountain-biking",
+            "name": "Courtavey Bike",
+            "location": "Crans-Montana",
+            "datetime": "2018-02-27T11:00:00.110Z",
+            "data": {
+                "Length": "12 km",
+                "Ascents": "550 m",
+                "Descents": "550 m"
+            }
+        },
+        {
+            "category": "mountain-biking",
+            "name": "Val d'Anniviers Bike Planet Tour",
+            "location": "St Luc",
+            "datetime": "2018-02-29T13:00:00.110Z",
         },
         {
             "category": "swimming",
@@ -48,6 +65,26 @@ module.exports = {
             }
         },
         {
+            "category": "swimming",
+            "name": "Lower Letten River Pool – Swimming Fun".
+            "location": "Zürich",
+            "datetime": "2018-02-27T16:00:00.110Z",
+            "data:" {
+                "Address": "Flussbad Unterer Letten\nWasserwerkstrasse 141\n8037 Zürich",
+                "Price": "0 CHF"
+            }
+        },
+        {
+            "category": "swimming",
+            "name": "Lido Egg – Nature Swimming",
+            "location": "Zürich",
+            "datetime": "2018-02-28T09:00:00.110Z",
+            "data": {
+                "Address": "Strandbad Egg\nRállikon 34\n8132 Egg",
+                "Price": "4 CHF"
+            }
+        },
+        {
             "category": "hackathons",
             "name": "START Hack 2018",
             "location": "St Gallen",
@@ -55,6 +92,16 @@ module.exports = {
             "data": {
                 "Duration": "36 hours",
                 "Participants": "300"
+            }
+        },
+        {
+            "category": "hackathons",
+            "name": "Integration in Progress Hackathon",
+            "location": "Geneva",
+            "datetime": "2018-03-17T08:30:00.110Z",
+            "data": {
+                "Duration": "12 hours",
+                "Participants": "100"
             }
         }
     ]

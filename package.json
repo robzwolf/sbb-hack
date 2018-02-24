@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/robzwolf/sbb-hack/issues"
   },
-  "homepage": "https://github.com/robzwolf/sbb-hack#readme"
+  "homepage": "https://github.com/robzwolf/sbb-hack#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }

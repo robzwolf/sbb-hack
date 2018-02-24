@@ -12,8 +12,9 @@ main {
     min-width: 300px;
 }
 
-#tiles {
+.tiles-container {
     overflow: auto;
+    margin-bottom: 1rem;
 }
 
 a.tile-activity {
@@ -32,10 +33,23 @@ a.tile-activity {
     transition: background 0.3s;
 }
 
-a.tile-activity:hover {
-    background: #f6f9f3;
+a.tile-activity-like:hover {
+    background: #ebf9dd;
 }
 
-a.tile-activity.selected {
-    background: #bef989;
+a.tile-activity-like.selected {
+    background: #a5ef6e;
+}
+
+a.tile-activity-dislike:hover {
+    background: #ffebe8;
+}
+
+a.tile-activity-dislike.selected {
+    background: #fd8787;
+}
+
+a.tile-activity-disabled {
+    background: #e2e2e2;
+    color: #a7a7a7;
 }

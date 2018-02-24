@@ -55,7 +55,6 @@ app.post("/post_tour", (req, res) => {
     console.log("tours is now", tours);
     generateTours.makeTour(userJson);
     res.set("Content-Type", "text/plain");
-    // res.send("Received: " + JSON.stringify(userJson));
     res.send("Received:" + JSON.stringify(userJson));
 })
 

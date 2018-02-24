@@ -66,10 +66,10 @@ module.exports = {
         },
         {
             "category": "swimming",
-            "name": "Lower Letten River Pool – Swimming Fun".
+            "name": "Lower Letten River Pool – Swimming Fun",
             "location": "Zürich",
             "datetime": "2018-02-27T16:00:00.110Z",
-            "data:" {
+            "data": {
                 "Address": "Flussbad Unterer Letten\nWasserwerkstrasse 141\n8037 Zürich",
                 "Price": "0 CHF"
             }

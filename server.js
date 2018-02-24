@@ -35,13 +35,14 @@ app.get("/customer_frontend", (req, res) => {
 
 app.post("/post_tour", (req, res) => {
     const json = req.body;
-    console.log(json);
+    console.log("Received json was:", json);
+    generateTours.makeTour(json);
     res.set("Content-Type", "text/plain");
     res.send("Received: " + JSON.stringify(json));
 })
 
 generateTours.sayHello();
-generateTours.doJSThing();
+generateTours.generateToken();
 
 // setTimeout(() => { console.log(generateTours.token); }, 2000);
 

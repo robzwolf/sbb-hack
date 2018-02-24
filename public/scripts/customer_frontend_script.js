@@ -19,6 +19,7 @@ $(document).ready(() => {
     });
     
     $("#travel-dates-next").click(function(e) {
+        // $("#travel-cities").slideDown();
         $("#activities-like").slideDown();
         $(this).addClass("faded-button");
         $("#travel-dates").slideUp();
@@ -27,6 +28,13 @@ $(document).ready(() => {
         }
         e.preventDefault();
     })
+    
+    // $("#travel-cities-next").click(function(e) {
+    //     $("#activities-like").slideDown();
+    //     $(this).addClass("faded-button");
+    //     $("#travel-cities").slideUp();
+    //     e.preventDefault();
+    // })
     
     $("#activities-like-next").click(function(e) {
         $("#activities-dislike").slideDown();
@@ -88,14 +96,18 @@ submitForm = function() {
     console.log("Submit clicked");
     submissionData = {
         "id": $("#app-id").val(),
-        dates: {
+        "dates": {
             "from": $("#from-date").val(),
             "return": $("#return-date").val()
         },
-        activities: {
+        "activities": {
             "liked": [],
             "disliked": []
         }
+        // cities: {
+        //     "start": $("#start-city").val(),
+        //     "end": $("#end-city").val()
+        // }
     };
 
     // Get liked activities
@@ -107,4 +119,33 @@ submitForm = function() {
     console.log(submissionData);
     
     // Submit it via AJAX
+    $.post("http://localhost:8080/post_tour", submissionData, data => {
+        console.log("Posted to localhost:8080/post_tour, RESPONSE is", data);
+    });
+    // postData('http://localhost:8080/post_tour', submissionData)
+    //   .then(data => console.log("received data using fetch", data)) // JSON from `response.json()` call
+    //   .catch(error => console.error(error))
+
 }
+
+// Example POST method implementation:
+
+
+// postData = function(url, data) {
+//   // Default options are marked with *
+//   return fetch(url, {
+//     body: JSON.stringify(data), // must match 'Content-Type' header
+//     cache: 'no-cache', // *default, no-cache, reload, force-cache, only-if-cached
+//     credentials: 'same-origin', // include, *omit
+//     headers: {
+//       // 'user-agent': 'Mozilla/4.0 MDN Example',
+//       'Accept': 'application/json, text/plain, */*',
+//       'Content-Type': 'application/json'
+//     },
+//     method: 'POST', // *GET, PUT, DELETE, etc.
+//     mode: 'no-cors', // no-cors, *same-origin
+//     redirect: 'follow', // *manual, error
+//     referrer: 'no-referrer', // *client
+//   })
+//   .then(response => console.log(response)) // parses response to JSON
+// }

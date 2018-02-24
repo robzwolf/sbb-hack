@@ -24,25 +24,45 @@
 </head>
 <body>
     <main>
-        <h1>Welcome!</h1>
-        <p>Please enter the ID given to you by your travel agent: <input type="tel" value="<%= query.id %>" /></p>
-        <p>Which activities do you enjoy?</p>
-        <div id="tiles-like" class="tiles-container">
-            <!-- Will be populated with activites -->
-        </div>
-        <p>Which activities do you not enjoy?</p>
-        <div id="tiles-dislike" class="tiles-container">
-            <!-- Will be populated with activities -->
-        </div>
+        <section id="header-application-id">
+            <h1>Welcome!</h1>
+            <p>Please enter the ID given to you by your travel agent: <input type="tel" value="<%= query.id %>" id="app-id" name="app-id"/></p>
+            <a href="#" id="header-application-id-next" class="next-button">Next</a>
+        </section>
+        <section id="travel-dates">
+            <h3>When would you like to travel?</h3>
+            <input type="datetime-local" />
+            <a href="#" id="travel-dates-next" class="next-button">Next</a>
+        </section>
+        <section id="activities-like">
+            <h3>Which activities do you enjoy?</h3>
+            <div id="tiles-like" class="tiles-container">
+                <!-- Will be populated with activites -->
+            </div>
+            <a href="#" id="activities-like-next" class="next-button">Next</a>
+        </section>
+        <section id="activities-dislike">
+            <h3>Which activities do you not enjoy?</h3>
+            <div id="tiles-dislike" class="tiles-container">
+                <!-- Will be populated with activities -->
+            </div>
+            <a href="#" id="activities-dislike-next" class="next-button">Submit</a>
+        </section>
+        <section id="thank-you">
+            <h1>Thank you!</h1>
+            <p>Your application has been submitted. Your application ID is <b id="b-app-id"></b>.</p>
+        </section>
     </main>
     
     <!-- Bootstrap JS -->
-    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     
     <!-- Custom JS -->
+    <% if (query.id !== undefined) { %>
+        <script>window.ID_INCLUDED = true</script>
+    <% } %>
     <script src="/scripts/customer_frontend_script.js"></script>
 </body>
 </html>

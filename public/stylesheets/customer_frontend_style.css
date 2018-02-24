@@ -49,7 +49,29 @@ a.tile-activity-dislike.selected {
     background: #fd8787;
 }
 
-a.tile-activity-disabled {
+a.tile-activity-disabled, a.tile-activity-disabled:hover {
     background: #e2e2e2;
     color: #a7a7a7;
+    cursor: default;
+}
+
+table.tiles-table {
+    width: 100%
+}
+
+p.td-activity {
+    margin: 0
+}
+
+section {
+    display: none;
+}
+
+a.next-button {
+    display: block;
+    text-align: right;
+}
+
+a.faded-button {
+    visibility: hidden;
 }

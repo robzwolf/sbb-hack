@@ -26,4 +26,4 @@ app.get("/customer_frontend", (req, res) => {
 })
 
 var port = 8080;
-app.listen(port, () => console.log("Example app listening on port %s!", port));
+app.listen(port, () => console.log("SBB hack node.js instance listening on port %s!", port));

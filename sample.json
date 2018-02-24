@@ -1,0 +1,85 @@
+{
+  "trip": {
+    "customer": {
+      "name" : "Robbie Williams",
+      "age" : 19,
+      "size" : 5
+    },
+    "steps" : [
+      {
+        "date" : "23.02.2018",
+        "columns" :  [
+          {
+            "type" : "flight",
+            "from" : {
+              "city" : "Düsseldorf",
+              "airport" : "DUS",
+              "time" : "13:30",
+              "date" : "23.02.2018",
+              "terminal" : "A",
+              "gate" : "A52"
+            },
+            "to" : {
+              "city" : "Zürich",
+              "airport" : "ZRH",
+              "time" : "14:40",
+              "date" : "23.02.2018",
+              "terminal" : "B",
+              "gate" : ""
+            },
+            "code" : "XY2309",
+            "startdate" : "23.02.2018",
+            "enddate" : "23.02.2018",
+            "starttime" : "13:30",
+            "endtime" : "14:40"
+          },
+          {
+            "type" : "train",
+            "from" : {
+              "city" : "Zürich",
+              "station" : "Airport",
+              "time" : "16:30",
+              "date" : "23.02.2018",
+              "platform" : "4"
+            },
+            "to" : {
+              "city" : "St. Gallen",
+              "station" : "Hauptbahnhof",
+              "time" : "17:41",
+              "date" : "23.02.2018",
+              "platform" : "5"
+            },
+            "code" : "IC4",
+            "startdate" : "23.02.2018",
+            "enddate" : "23.02.2018",
+            "starttime" : "13:30",
+            "endtime" : "14:40"
+          },
+          {
+            "type" : "activity",
+            "name": "START Hack",
+            "explain": "A fancy hackathon",
+            "categories" : [
+              "hackathon"
+            ],
+            "location" : "University of St. Gallen",
+            "startdate" : "23.02.2018",
+            "enddate" : "25.02.2018",
+            "starttime" : "18:00",
+            "endtime" : "14:00"
+          },
+          {
+            "type" : "sleep",
+            "name": "START Hack",
+            "location" : "University of St. Gallen",
+            "explain" : "A fancy hackathon",
+            "startdate" : "23.02.2018",
+            "enddate" : "24.02.2018",
+            "starttime" : "18:00",
+            "endtime" : "14:00"
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -25,60 +25,98 @@
                 </nav>
             </div>
             <main>
-                <div class="row">
+                <div class="row" v-for="s in tour.steps">
                     <div class="col">
-                        <h5>Wednesday</h5>
-                        <div class="jumbotron">
-                            <h6>Trip</h6>
+                        <h5>{{s.date}}</h5>
+                        <div v-for="c in s.columns">
+                            <!-- flight -->
+                            <div class="card text-white bg-danger mb-3" style="max-width: 18rem;" v-if="c.type === 'flight'">
+                                <div class="card-header">Flight</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">From
+                                        <b>{{c.from.city}}
+                                            -
+                                            {{c.from.airport}}</b>
+                                    </h5>
+                                    <p class="card-text">{{c.starttime}}
+                                        &bull; Gate
+                                        {{c.from.gate}}</p>
+                                    <h5 class="card-title">To
+                                        <b>{{c.to.city}}
+                                            -
+                                            {{c.to.airport}}</b>
+                                    </h5>
+                                    <p class="card-text">{{c.endtime}}
+                                        &bull; Terminal
+                                        {{c.to.terminal}}</p>
+                                    <p>Flying with
+                                        {{c.code}}</p>
+                                </div>
+                            </div>
+                            <!-- end of flight -->
+                            <!-- train -->
+                            <div class="card text-white bg-primary mb-3" style="max-width: 18rem;" v-if="c.type === 'train'">
+                                <div class="card-header">Trip</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">From
+                                        <b>{{c.from.city}}</b>
+                                    </h5>
+                                    <p class="card-text">{{c.from.station}}
+                                        @
+                                        {{c.starttime}}
+                                        on plattform
+                                        {{c.from.platform}}</p>
+                                    <h5 class="card-title">To
+                                        <b>{{c.to.city}}</b>
+                                    </h5>
+                                    <p class="card-text">{{c.to.station}}
+                                        @
+                                        {{c.endtime}}
+                                        on plattform
+                                        {{c.to.platform}}</p>
+                                </div>
+                            </div>
+                            <!-- end of train -->
+                            <!-- activity -->
+                            <div class="card text-white bg-success mb-3" style="max-width: 18rem;" v-if="c.type === 'activity'">
+                                <div class="card-header">Activity</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{c.name}}</h5>
+                                    <p>{{c.categories}}</p>
+                                    <p>{{c.starttime}}
+                                        -
+                                        {{c.endtime}}
+                                        &bull;
+                                        {{c.location}}</p>
 
-                            <p>From:
-                                <b>Zurich</b>
-                            </p>
-                            <p>To:
-                                <b>St. Gallen</b>
-                            </p>
-                        </div>
-                        <div class="jumbotron">
-                            <h6>Activity</h6>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magnam aliquam, laboriosam nobis molestiae incidunt, nihil adipisci iusto, sapiente ad veritatis nemo porro deleniti impedit doloribus saepe, laborum alias quam iure!</div>
-                    </div>
-                    <div class="col">
-                        <h5>Thursday</h5>
-                        <div class="jumbotron">
-                            <h6>Trip</h6>
+                                    <p class="card-text">{{c.explain}}</p>
+                                </div>
+                            </div>
+                            <!-- end of activity -->
+                            <!-- sleep -->
 
-                            <p>From:
-                                <b>Zurich</b>
-                            </p>
-                            <p>To:
-                                <b>St. Gallen</b>
-                            </p>
+                            <div class="card text-white bg-secondary mb-3" style="max-width: 18rem;" v-if="c.type === 'sleep'">
+                                <div class="card-header">Sleep</div>
+                                <div class="card-body">
+                                    <h5 class="card-title">{{c.name}}</h5>
+                                    <p>{{c.location}}</p>
+                                    <p>{{c.startdate}}
+                                        {{c.starttime}}
+                                        -
+                                        {{c.enddate}}
+                                        {{c.endtime}}</p>
+                                    <p class="card-text">{{c.explain}}</p>
+                                </div>
+                            </div>
+                            <!-- end of sleep -->
                         </div>
-                        <div class="jumbotron">
-                            <h6>Activity</h6>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius nemo voluptatem nobis officia quibusdam, possimus repellat minima animi, dolores a voluptatum qui velit nostrum aliquid odio dolor rem nesciunt molestiae.</div>
-                    </div>
-                    <div class="col">
-                        <h5>Friday</h5>
-                        <div class="jumbotron">
-                            <h6>Trip</h6>
-
-                            <p>From:
-                                <b>Zurich</b>
-                            </p>
-                            <p>To:
-                                <b>St. Gallen</b>
-                            </p>
-                        </div>
-                        <div class="jumbotron">
-                            <h6>Activity</h6>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur at alias, similique, a, aliquam quam placeat ea eos mollitia sed, nam minus accusamus ab consequatur voluptatem. Ab provident ut laudantium!</div>
                     </div>
                 </div>
 
             </main>
             <footer class="footer text-center">
                 <p>Logic is the beginning of wisdom, not the end.</p>
+                <button class="btn" v-on:click="getTour();">Load</button>
             </footer>
         </div>
 

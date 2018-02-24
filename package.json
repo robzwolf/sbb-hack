@@ -2,7 +2,7 @@
   "name": "sbb-hack",
   "version": "1.0.0",
   "description": "SBB Challenge hack at START Hack 2018.",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/robzwolf/sbb-hack/issues"
   },
-  "homepage": "https://github.com/robzwolf/sbb-hack#readme"
+  "homepage": "https://github.com/robzwolf/sbb-hack#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }

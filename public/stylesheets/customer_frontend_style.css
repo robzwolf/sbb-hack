@@ -35,3 +35,7 @@ a.tile-activity {
 a.tile-activity:hover {
     background: #f6f9f3;
 }
+
+a.tile-activity.selected {
+    background: #bef989;
+}

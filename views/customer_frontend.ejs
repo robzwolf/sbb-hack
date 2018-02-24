@@ -20,16 +20,17 @@
     <!-- Favicon -->
     <link rel="icon" type="image/jpg" href="/images/sbb_logo.jpg">
     
-    <title>Bootstrap Test Page</title>
+    <title>Customer Frontend</title>
 </head>
 <body>
     <main>
         <h1>Welcome!</h1>
-        <p>This is a test bootstrap document.</p>
-        <p>Enter a query parameter <code>http://localhost:8080/customer_frontend?q=<b>something</b></code> to print it here:</p>
+        <p>Please enter the ID given to you by your travel agent: <input type="tel" value="<%= query.id %>" /></p>
+        <p>Please enter the 
+        <!-- <p>Enter a query parameter <code>http://localhost:8080/customer_frontend?q=<b>something</b></code> to print it here:</p>
         <% if(query.q) { %>
             <p><code> <%= query.q %> </code></p>
-        <% } %>
+        <% } %> -->
     </main>
     
     <!-- Bootstrap JS -->

@@ -75,3 +75,16 @@ a.next-button {
 a.faded-button {
     visibility: hidden;
 }
+
+label {
+    margin: auto 8px;
+    margin-left: 20px;
+}
+
+input[type="date"] {
+    border: 1px solid #efefef;
+}
+
+input[type="date"]:focus {
+    outline: #ccc auto 2px;
+}

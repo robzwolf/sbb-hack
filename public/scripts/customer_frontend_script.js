@@ -11,6 +11,9 @@ $(document).ready(() => {
     $("#header-application-id-next").click(function(e) {
         $("#travel-dates").slideDown();
         $(this).addClass("faded-button");
+        if(!window.ID_INCLUDED) {
+            $("#header-application-id").slideUp();
+        }
         e.preventDefault();
     });
     
@@ -37,6 +40,9 @@ $(document).ready(() => {
         $(this).addClass("faded-button");
         $("#header-application-id").slideUp();
         $("#activities-dislike").slideUp();
+        
+        submitForm();
+        
         e.preventDefault();
     });
     
@@ -45,6 +51,10 @@ $(document).ready(() => {
         $("#travel-dates").slideDown();
         $("#header-application-id-next").addClass("faded-button");
     }
+    
+    document.getElementById("from-date").valueAsDate = new Date();
+    
+    
     
     // Load tile activities
     $.getJSON("/scripts/activities_static.js", data => {
@@ -74,3 +84,32 @@ $(document).ready(() => {
     });
 
 });
+
+// From https://stackoverflow.com/questions/6040515/how-do-i-get-month-and-date-of-javascript-in-2-digit-format/22198300#comment6987453_6040556
+function addZ(n){return n<10? '0'+n:''+n;}
+
+
+submitForm = function() {
+    console.log("Submit clicked");
+    submissionData = {
+        "id": $("#app-id").val(),
+        dates: {
+            "from": $("#from-date").val(),
+            "return": $("#return-date").val()
+        },
+        activities: {
+            "liked": [],
+            "disliked": []
+        }
+    };
+
+    // Get liked activities
+    $("#tiles-like").children().filter(".selected").each((i, elem) => { submissionData.activities.liked.push($(elem).attr("data-activity"));});
+    
+    // Get disliked activities
+    $("#tiles-dislike").children().filter(".selected").each((i, elem) => { submissionData.activities.disliked.push($(elem).attr("data-activity"));});
+    
+    console.log(submissionData);
+    
+    // Submit it via AJAX
+}

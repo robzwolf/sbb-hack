@@ -65,7 +65,9 @@ $(document).ready(() => {
     document.getElementById("return-date").valueAsDate = new Date();
     
     // Load tile activities
-    $.getJSON("/scripts/activities_static.js", data => {
+    const activities_url = "/activities_categories"
+    // const activities_url = "/scripts/activities_static.js"
+    $.getJSON(activities_url, data => {
         
         console.log("did json activities retrieve:", data);
         
@@ -114,9 +116,25 @@ submitForm = function() {
     
     console.log(submissionData);
     
+    submissionString = JSON.stringify(submissionData)
+    
+    console.log("SENDING:", submissionString);
+    
     // Submit it via AJAX
-    $.post("http://localhost:8080/post_tour", submissionData, data => {
-        console.log("Posted to localhost:8080/post_tour, RESPONSE is", data);
-    });
+    // ABANDONED THIS – content-type issues
+    // $.post("http://localhost:8080/post_tour", submissionString, data => {
+    //     console.log("Posted to localhost:8080/post_tour, RESPONSE is", data);
+    // }, "text");
+    
+    $.ajax({
+        url: "/post_tour",
+        type: "POST",
+        data: submissionString,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: function(data){
+            console.log("Posted to /post_tour, RESPONSE IS\n",data);
+        }
+    })
     
 }

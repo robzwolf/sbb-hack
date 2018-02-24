@@ -8,6 +8,18 @@ const request = require('request');
 const generateTours = require("./generate-tours.js");
 const activities = require("./activities.js");
 
+const tours = {
+    "000000": {
+        // Example tour
+        userJson: {
+            // ...
+        },
+        tour: {
+            // ...
+        }
+    }
+};
+
 app.use(express.static("public"));
 
 app.use('/agent', agent)
@@ -35,11 +47,16 @@ app.get("/customer_frontend", (req, res) => {
 })
 
 app.post("/post_tour", (req, res) => {
-    const json = req.body;
-    console.log("Received json was:", json);
-    generateTours.makeTour(json);
+    const userJson = req.body;
+    console.log("Received json was:", userJson);
+    tours[userJson.id] = {
+        "userJson": cleanupUserJson(userJson)
+    }
+    console.log("tours is now", tours);
+    generateTours.makeTour(userJson);
     res.set("Content-Type", "text/plain");
-    res.send("Received: " + JSON.stringify(json));
+    // res.send("Received: " + JSON.stringify(userJson));
+    res.send("Received:" + JSON.stringify(userJson));
 })
 
 app.get("/activities_categories", (req, res) => {
@@ -49,6 +66,27 @@ app.get("/activities_categories", (req, res) => {
 
 generateTours.sayHello();
 generateTours.generateToken();
+
+const cleanupUserJson = function(userJson) {
+    if(!userJson["activities"]) {
+        userJson["activities"] = {
+            // "liked": [],
+            // "disliked": []
+        }
+        console.log("redfeined activities")
+    }
+    
+    if(!userJson["activities"]["disliked"]) {
+        userJson["activities"]["liked"] = [];
+        console.log("refedefined liked")
+    }
+    
+    if(!userJson["activities"]["disliked"]) {
+        userJson["activities"]["disliked"] = [];
+        console.log("refedeifng disliked")
+    }
+    return userJson;
+}
 
 // setTimeout(() => { console.log(generateTours.token); }, 2000);
 

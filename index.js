@@ -10,8 +10,8 @@ app.get("/", (req, res) => {
     });
 });
 
-app.get("/bootstrap", (req, res) => {
-    ejs.renderFile("views/bootstrap.ejs", {"query": req.query}, function(err, str){
+app.get("/customer_frontend", (req, res) => {
+    ejs.renderFile("views/customer_frontend.ejs", {"query": req.query}, (err, str) => {
         res.send(str);
     })
 })

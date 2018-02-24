@@ -116,8 +116,20 @@
             </main>
             <footer class="footer text-center">
                 <p>Logic is the beginning of wisdom, not the end.</p>
-                <button class="btn" v-on:click="getTour();">Load</button>
             </footer>
+
+            <div class="overlay" v-show="showOverlay">
+                <div class="container">
+                    <div class="row">
+                        <div class="jumbotron mx-auto text-center mt-5000">
+                            <h1>Tour Generator v5</h1>
+                            <button class="btn btn-success" v-on:click="getTour();">Load Latest Tour</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
         </div>
 
         <!-- Optional JavaScript -->

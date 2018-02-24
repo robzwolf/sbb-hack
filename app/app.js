@@ -8,6 +8,7 @@ var app = new Vue({
       }).then((data) => {
         console.log(data);
         _this.tour = data.trip;
+        _this.showOverlay = false;
       })
     }
   },
@@ -17,6 +18,7 @@ var app = new Vue({
       steps: [{
         columns: []
       }]
-    }
+    },
+    showOverlay: true
   }
 })

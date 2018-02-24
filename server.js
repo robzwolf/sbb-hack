@@ -6,6 +6,7 @@ const bodyParser = require("body-parser");
 const jquery = require("jquery");
 const request = require('request');
 const generateTours = require("./generate-tours.js");
+const activities = require("./activities.js");
 
 app.use(express.static("public"));
 
@@ -40,6 +41,11 @@ app.post("/post_tour", (req, res) => {
     res.set("Content-Type", "text/plain");
     res.send("Received: " + JSON.stringify(json));
 })
+
+app.get("/activities_categories", (req, res) => {
+    res.set("Content-Type", "application/json");
+    res.send(activities.categories);
+});
 
 generateTours.sayHello();
 generateTours.generateToken();

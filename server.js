@@ -3,6 +3,7 @@ const app = express();
 const ejs = require("ejs");
 const agent = require('./agent');
 const bodyParser = require("body-parser");
+const generateTours = require("./generate-tours.js");
 
 app.use(express.static("public"));
 
@@ -37,7 +38,7 @@ app.post("/post_tour", (req, res) => {
     res.send("Received: " + JSON.stringify(json));
 })
 
-
+generateTours.sayHello();
 
 var port = 8080;
 app.listen(port, () => console.log("SBB hack node.js instance listening on port %s!", port));

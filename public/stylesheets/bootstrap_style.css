@@ -1,13 +1,14 @@
 body {
-    padding:10px
+    padding: 20px;
 }
 
 main {
-    max-width: 60%;
+    width: 60%;
     margin: auto;
     border: 1px solid #eee;
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 2px 2px rgba(0,0,0,.05);
     box-sizing: border-box;
+    min-width: 300px;
 }

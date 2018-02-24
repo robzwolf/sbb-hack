@@ -12,7 +12,7 @@ app.get("/", (req, res) => {
   ejs.renderFile("views/index.ejs", {
     "txt": "Greetings!",
     "query": req.query
-  }, function(err, str) {
+}, (err, str) => {
     res.send(str);
   });
 });

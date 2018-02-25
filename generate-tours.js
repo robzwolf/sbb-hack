@@ -26,7 +26,7 @@ module.exports = {
         );
     },
     "token": undefined,
-    "makeTour": function(userJson) {
+    "makeTour": function(userJson, _this) {
         console.log("makeTour json was passed:", userJson);
         /* Let us define the general process for generating a tour.
         1) Retrieve a list of available activities
@@ -56,23 +56,75 @@ module.exports = {
         // Start constructing our events list, ensuring we include the user's preferred activities
         var events_list = [];
         var temp_liked = userJson["activities"]["liked"].slice();
-        i_date_counter = tripStartDate;
+        var i_date_counter = tripStartDate;
         while(i_date_counter <= tripEndDate) {
             /* First: read through the `liked` list and add an event corresponding to each category in the list order
                Second: if necessary, fill the remaining days with random events_list
             */
-            var category = temp_liked.pop();
+            if(temp_liked.length > 0) {
+                var category = temp_liked.pop();
+            } else {
+                var category = "any";
+            }
             /* Select an event of this category on this day */
-            
-            
-            events_list_elem = {}
-            // events_list_elem[i_date_counter] = 
-            // events_list.push({i_date_counter: })
+            var selected_event = _this.selectEventFromCategory(category, suitable_events, i_date_counter);
+            console.log("selected_event is", selected_event);
+            var events_list_elem = {
+                "date": i_date_counter,
+                "event": selected_event
+            }
+            console.log("events_list_elem is", events_list_elem);
+            events_list.push(events_list_elem);
             
             // Set counter forward by one day
             i_date_counter.setDate(i_date_counter.getDate() + 1);
         }
+        console.log("generated events_list is", events_list);
+        return events_list;
         
+        
+    },
+    "selectEventFromCategory": function(category, suitable_events, target_date) {
+        var target_date = new Date(target_date);
+        console.log("requsted category is", category);
+        console.log("target date is", target_date);
+        return_event = undefined;
+        for(var i=0; i<suitable_events.length; i++) {
+            event = suitable_events[i];
+            var eventDate = new Date(event.datetime);
+            console.log("eventDate for " + event.name + " is " + eventDate);
+            if(category != "any") {
+                if(eventDate.getDate() == target_date.getDate() && event.category == category) {
+                    console.log("selected", event);
+                    return_event = event;
+                    break;
+                }
+            } else {
+                if(eventDate.getDate() == target_date.getDate()) {
+                    console.log("selected", event);
+                    return_event = event;
+                    break;
+                }
+            }
+        }
+        // suitable_events.forEach((event, i) => {
+        //     var eventDate = new Date(event.datetime);
+        //     console.log("eventDate for " + event.name + " is " + eventDate);
+        //     if(category != "any") {
+        //         if(eventDate.getDate() == target_date.getDate() && event.category == category) {
+        //             console.log("selected", event);
+        //             return_event = event;
+        //             break;
+        //         }
+        //     } else {
+        //         if(eventDate.getDate() == target_date.getDate()) {
+        //             console.log("selected", event);
+        //             return_event = event;
+        //             break;
+        //         }
+        //     }
+        // })
+        return return_event;
         
     }
 }

@@ -50,10 +50,13 @@ app.post("/post_tour", (req, res) => {
     const userJson = req.body;
     console.log("Received json was:", userJson);
     tours[userJson.id] = {
-        "userJson": cleanupUserJson(userJson)
+        "userJson": cleanupUserJson(userJson),
+        "tour": []
     }
     console.log("tours is now", tours);
-    generateTours.makeTour(userJson);
+    tour = generateTours.makeTour(userJson, generateTours);
+    tours[userJson.id]["tour"] = tour;
+    console.log("\n\n#### GENERATED TOUR WAS", tours[userJson.id]["tour"]);
     res.set("Content-Type", "text/plain");
     res.send("Received:" + JSON.stringify(userJson));
 })
@@ -62,6 +65,11 @@ app.get("/activities_categories", (req, res) => {
     res.set("Content-Type", "application/json");
     res.send(activities.categories);
 });
+
+app.get("/request_tour_by_id", (req, res) => {
+    res.set("Content-Type", "application/json");
+    res.send(JSON.stringify(tours[req.query.id]));
+})
 
 generateTours.sayHello();
 generateTours.generateToken();

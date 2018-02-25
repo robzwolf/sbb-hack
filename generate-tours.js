@@ -39,17 +39,39 @@ module.exports = {
            make this available via /retrieve_tour?id=xxx
         */
         
+        // Convert start/return dates to Date format
+        const tripStartDate = new Date(userJson["dates"]["from"]);
+        const tripEndDate = new Date(userJson["dates"]["return"]);
+        
         // Filter the list of activities down to only those that the user doesn't dislike
         suitable_events = [];
         activities.events.forEach((event, index) => {
-            // console.log("index of " + event.category + " in .disliked is: " + userJson["activities"]["disliked"].indexOf(event.category));
-            if(userJson["activities"]["disliked"].indexOf(event.category) <= -1) {
+            eventDate = new Date(event.datetime);
+            if(userJson["activities"]["disliked"].indexOf(event.category) <= -1 && tripStartDate < eventDate && eventDate < tripEndDate) {
                 suitable_events.push(event);
             }
         });
         console.log("suitable_events are:", suitable_events);
         
-        
+        // Start constructing our events list, ensuring we include the user's preferred activities
+        var events_list = [];
+        var temp_liked = userJson["activities"]["liked"].slice();
+        i_date_counter = tripStartDate;
+        while(i_date_counter <= tripEndDate) {
+            /* First: read through the `liked` list and add an event corresponding to each category in the list order
+               Second: if necessary, fill the remaining days with random events_list
+            */
+            var category = temp_liked.pop();
+            /* Select an event of this category on this day */
+            
+            
+            events_list_elem = {}
+            // events_list_elem[i_date_counter] = 
+            // events_list.push({i_date_counter: })
+            
+            // Set counter forward by one day
+            i_date_counter.setDate(i_date_counter.getDate() + 1);
+        }
         
         
     }
